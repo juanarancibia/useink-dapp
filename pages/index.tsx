@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import ConexionBilletera from "../components/ConexionBilletera";
+import ConexionBilletera from "../components/ConexionWallet";
 import Stack from "@mui/material/Stack";
 
 const Home: NextPage = () => {
