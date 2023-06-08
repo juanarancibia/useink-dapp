@@ -12,7 +12,7 @@ const getAccountDisplayValue = (account: WalletState["account"]) => {
   return `${account!.name} - ${account!.address.substring(0, 7)}...`;
 };
 
-const SelectorCuenta: FC<{}> = () => {
+const AccountSelection: FC<{}> = () => {
   const { account, accounts, setAccount } = useWallet();
 
   return (
@@ -38,4 +38,4 @@ const SelectorCuenta: FC<{}> = () => {
   );
 };
 
-export default SelectorCuenta;
+export default AccountSelection;

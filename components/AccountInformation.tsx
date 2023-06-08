@@ -1,14 +1,14 @@
 import { Stack, Typography } from "@mui/material";
 import { FC } from "react";
 import { useWallet } from "useink";
-import SelectorCuenta from "./SelectorCuenta";
+import AccountSelection from "./AccountSelection";
 
-export const InformacionCuenta: FC<{}> = () => {
+export const AccountInformation: FC<{}> = () => {
   const { account } = useWallet();
 
   return (
     <Stack height="fit-content">
-      <SelectorCuenta />
+      <AccountSelection />
 
       <Typography variant="h5" fontWeight="bold" marginTop={4} marginBottom={2}>
         Cuenta seleccionada
@@ -21,4 +21,4 @@ export const InformacionCuenta: FC<{}> = () => {
   );
 };
 
-export default InformacionCuenta;
+export default AccountInformation;

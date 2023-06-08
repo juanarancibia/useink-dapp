@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import ConexionBilletera from "../components/ConexionWallet";
+import WalletConnection from "../components/WalletConnection";
 import Stack from "@mui/material/Stack";
 
 const Home: NextPage = () => {
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 
       <main>
         <Stack alignItems="center" justifyContent="center">
-          <ConexionBilletera />
+          <WalletConnection />
         </Stack>
       </main>
     </div>

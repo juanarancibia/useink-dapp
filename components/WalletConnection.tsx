@@ -6,9 +6,9 @@ import Stack from "@mui/material/Stack";
 import Image from "next/image";
 import { FC } from "react";
 import { useInstalledWallets, useUninstalledWallets, useWallet } from "useink";
-import InformacionCuenta from "./InformacionCuenta";
+import AccountInformation from "./AccountInformation";
 
-export const ConexionBilletera: FC<{}> = () => {
+export const WalletConnection: FC<{}> = () => {
   const { connect, disconnect, account } = useWallet();
   const installedWallets = useInstalledWallets();
   const uninstalledWallets = useUninstalledWallets();
@@ -61,7 +61,7 @@ export const ConexionBilletera: FC<{}> = () => {
 
   return (
     <Stack justifyContent={"center"} gap={3}>
-      <InformacionCuenta />
+      <AccountInformation />
       <Button variant="outlined" onClick={disconnect}>
         <Typography paddingX={3} paddingY={1} width={"100%"}>
           Desconectar
@@ -72,4 +72,4 @@ export const ConexionBilletera: FC<{}> = () => {
   );
 };
 
-export default ConexionBilletera;
+export default WalletConnection;
