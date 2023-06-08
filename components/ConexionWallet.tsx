@@ -16,7 +16,7 @@ export const ConexionBilletera: FC<{}> = () => {
     return (
       <Stack alignItems="start" justifyContent="center">
         <Typography variant="h5" paddingY={3} fontWeight="bold">
-          BILLETERAS INSTALADAS
+          EXTENSIONES INSTALADAS
         </Typography>
 
         {installedWallets.map((w) => (
@@ -36,7 +36,7 @@ export const ConexionBilletera: FC<{}> = () => {
         ))}
 
         <Typography variant="h5" paddingY={3} fontWeight="bold">
-          BILLETERAS NO INSTALADAS
+          EXTENSIONES NO INSTALADAS
         </Typography>
 
         {uninstalledWallets.map((w) => (
