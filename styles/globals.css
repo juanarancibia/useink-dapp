@@ -1,7 +1,6 @@
 html,
 body,
-body div,
-body div div {
+body > div {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -9,7 +8,8 @@ body div div {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-main {
+main,
+main > div {
   height: 100%;
 }
 

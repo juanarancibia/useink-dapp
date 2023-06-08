@@ -5,7 +5,7 @@ import Stack from "@mui/material/Stack";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>useink dApp</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
           <WalletConnection />
         </Stack>
       </main>
-    </div>
+    </>
   );
 };
 
