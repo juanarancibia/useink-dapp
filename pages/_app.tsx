@@ -1,7 +1,7 @@
 import { ThemeProvider, createTheme } from "@mui/material";
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
-import { RococoTestnet } from "useink/chains";
+import { RococoContractsTestnet, RococoTestnet } from "useink/chains";
 import "../styles/globals.css";
 
 const UseInkProvider = dynamic(
@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <UseInkProvider
         config={{
           dappName: "useink dApp",
-          chains: [RococoTestnet],
+          chains: [RococoContractsTestnet],
         }}
       >
         <Component {...pageProps} />
