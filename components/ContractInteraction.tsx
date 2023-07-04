@@ -27,7 +27,7 @@ const ContractInteraction: FC<{}> = () => {
   }, [account, getBalanceByAccount]);
 
   return (
-    <Stack marginTop={3}>
+    <Stack marginTop={4}>
       <Typography paddingY={2} variant="h4" textAlign="center">
         Contrato de Banco
       </Typography>
