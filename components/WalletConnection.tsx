@@ -7,6 +7,7 @@ import Image from "next/image";
 import { FC } from "react";
 import { useInstalledWallets, useUninstalledWallets, useWallet } from "useink";
 import AccountInformation from "./AccountInformation";
+import ContractInteraction from "./ContractInteraction";
 
 export const WalletConnection: FC<{}> = () => {
   const { connect, disconnect, account } = useWallet();
@@ -60,14 +61,18 @@ export const WalletConnection: FC<{}> = () => {
   }
 
   return (
-    <Stack justifyContent={"center"} gap={3}>
-      <AccountInformation />
-      <Button variant="outlined" onClick={disconnect}>
-        <Typography paddingX={3} paddingY={1} width={"100%"}>
-          Desconectar
-        </Typography>
-        <Logout />
-      </Button>
+    <Stack direction="row" gap={15} alignItems="center" justifyContent="center">
+      <Stack justifyContent={"center"} gap={3}>
+        <AccountInformation />
+        <Button variant="outlined" onClick={disconnect}>
+          <Typography paddingX={3} paddingY={1} width={"100%"}>
+            Desconectar
+          </Typography>
+          <Logout />
+        </Button>
+      </Stack>
+
+      <ContractInteraction />
     </Stack>
   );
 };

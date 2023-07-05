@@ -1,17 +1,14 @@
 import { Stack, Typography } from "@mui/material";
 import { FC } from "react";
-import { Balance, useBalance, useWallet } from "useink";
-import { formatBalance } from "useink/utils";
+import { useApi, useBalance, useChain, useWallet } from "useink";
+import { planckToDecimalFormatted } from "useink/utils";
 import AccountSelection from "./AccountSelection";
-
-const getTokenSymbol = (balance: Balance): string => {
-  return balance?.freeBalance.registry.getChainProperties().tokenSymbol
-    .value[0];
-};
 
 export const AccountInformation: FC<{}> = () => {
   const { account } = useWallet();
   const balance = useBalance(account);
+  const chain = useChain();
+  const apiProvider = useApi(chain?.id);
 
   return (
     <Stack height="fit-content">
@@ -28,12 +25,9 @@ export const AccountInformation: FC<{}> = () => {
       <Typography color="grey">
         Balance:{" "}
         <b>
-          {formatBalance(balance?.freeBalance, {
-            withSi: false,
-            withZero: false,
-          })}
-        </b>{" "}
-        {getTokenSymbol(balance)}
+          {planckToDecimalFormatted(balance?.freeBalance, apiProvider?.api) ||
+            " - "}
+        </b>
       </Typography>
     </Stack>
   );
