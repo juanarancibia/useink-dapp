@@ -1,7 +1,14 @@
 import { Button, Stack, Typography } from "@mui/material";
 import Decimal from "decimal.js";
 import { FC, useEffect } from "react";
-import { useCall, useContract, useTx, useWallet } from "useink";
+import {
+  useCall,
+  useChainDecimals,
+  useContract,
+  useTokenSymbol,
+  useTx,
+  useWallet,
+} from "useink";
 import { pickDecoded } from "useink/utils";
 import {
   BANK_CONTRACT_ADDRESS_ROC,
@@ -25,6 +32,9 @@ const ContractInteraction: FC<{}> = () => {
   const deposit = useTx(bankContract, BANK_CONTRACT_MESSAGES.deposit);
   const withdraw = useTx(bankContract, BANK_CONTRACT_MESSAGES.withdraw);
 
+  const tokenSymbol = useTokenSymbol() || "";
+  const chainDecimals = useChainDecimals() || 12;
+
   useEffect(() => {
     getBalanceByAccount.send();
   }, [account, getBalanceByAccount]);
@@ -37,38 +47,42 @@ const ContractInteraction: FC<{}> = () => {
 
       <Typography paddingBottom={1} textAlign="center">
         {formatAccountDepositBalance(
-          pickDecoded(getBalanceByAccount.result)?.Ok
+          pickDecoded(getBalanceByAccount.result)?.Ok,
+          chainDecimals,
+          tokenSymbol
         ) ?? pickDecoded(getBalanceByAccount.result)?.Err}
       </Typography>
 
       <Button
         onClick={() =>
           deposit.signAndSend([], {
-            value: formatNumber(0.1, 12),
+            value: formatNumber(0.1, chainDecimals),
           })
         }
       >
-        Depositar 0.1 ROC
+        Depositar 0.1 {tokenSymbol}
       </Button>
       <Button
         disabled={!pickDecoded(getBalanceByAccount.result)?.Ok}
-        onClick={() => withdraw.signAndSend([formatNumber(0.1, 12)])}
+        onClick={() => withdraw.signAndSend([formatNumber(0.1, chainDecimals)])}
       >
-        Retirar 0.1 ROC
+        Retirar 0.1 {tokenSymbol}
       </Button>
     </Stack>
   );
 };
 
 const formatAccountDepositBalance = (
-  accountBalance: string | undefined
+  accountBalance: string | undefined,
+  chainDecimals: number,
+  tokenSymbol: string
 ): string | undefined => {
   return accountBalance
     ? `Depósito de cuenta: ${formatNumber(
         +accountBalance.replaceAll(",", ""),
-        12,
+        chainDecimals,
         false
-      )} ROC`
+      )} ${tokenSymbol}`
     : undefined;
 };
 
