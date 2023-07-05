@@ -22,8 +22,8 @@ const ContractInteraction: FC<{}> = () => {
     BANK_CONTRACT_MESSAGES.getBalanceByAccount
   );
 
-  const deposit = useTx(bankContract, "deposit");
-  const withdraw = useTx(bankContract, "withdraw");
+  const deposit = useTx(bankContract, BANK_CONTRACT_MESSAGES.deposit);
+  const withdraw = useTx(bankContract, BANK_CONTRACT_MESSAGES.withdraw);
 
   useEffect(() => {
     getBalanceByAccount.send();

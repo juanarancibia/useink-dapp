@@ -3,4 +3,6 @@ export const BANK_CONTRACT_ADDRESS_ROC =
 
 export const BANK_CONTRACT_MESSAGES = {
   getBalanceByAccount: "getBalanceByAccount",
+  deposit: "deposit",
+  withdraw: "withdraw",
 };
