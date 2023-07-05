@@ -2,7 +2,10 @@ import { Stack, Typography } from "@mui/material";
 import { FC, useEffect } from "react";
 import { useCall, useContract, useWallet } from "useink";
 import { pickDecoded } from "useink/utils";
-import { BANK_CONTRACT_ADDRESS_ROC } from "../contracts/addresses";
+import {
+  BANK_CONTRACT_ADDRESS_ROC,
+  BANK_CONTRACT_MESSAGES,
+} from "../contracts/constants";
 import bankContractMetadata from "../contracts/bank.json";
 
 const ContractInteraction: FC<{}> = () => {
@@ -15,7 +18,7 @@ const ContractInteraction: FC<{}> = () => {
 
   const getBalanceByAccount = useCall<{ Ok: string; Err: string }>(
     bankContract,
-    "getBalanceByAccount"
+    BANK_CONTRACT_MESSAGES.getBalanceByAccount
   );
 
   useEffect(() => {
